@@ -208,152 +208,12 @@ class lffEvents extends Plugin
 
     public function siteHead()
     {
-
-        echo "
-	<style>
-		button.fc-today-button.fc-button.fc-button-primary{
-			margin-right:5px;
-		}
-		.datepicker{
-			display:grid;
-			grid-template-columns:1fr 150px;
-			gap:5px;
-			box-sizing:border-box;
-			margin-top:10px;
-		}
-		.datepicker input{
-			padding:10px;
-			border-radius: 0.25em;
-			border:solid 1px #ddd;
-			box-sizing:border-box;
-			width:100%;
-		}
-		.datepicker button{
-			padding:10px;
-			box-sizing:border-box;
-			background-color: var(--fc-button-bg-color);
-			border-color: var(--fc-button-border-color);
-			color: var(--fc-button-text-color);
-			border-radius: 0.25em;
-			border:none;
-			width20%;
-			cursor:pointer;
-		}
-		.fc .fc-bg-event{
-			padding-top:25px !important;
-		}
-		:root{
-			--fc-bg-event-opacity:0.7 !important;
-		}
-		.fc-daygrid-event {
-			white-space: normal !important;
-			align-items: normal !important;
-			padding:10px;
-			box-sizing:border-box;
-		}
-		@media(min-width:996px){
-			.fc-scroller.fc-scroller-liquid-absolute{
-				overflow:hidden !important
-			}
-		};
-	</style>
-	
-	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
-	
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			var calendarEl = document.getElementById('calendar');
-			var calendar = new FullCalendar.Calendar(calendarEl, 
-			";
-
-
-
-        if ($this->getValue('headershow') == 'yes') {
-            echo "{
-					allDay:true,
-					eventBackgroundColor:'blue',
-					initialView: '" . $this->getValue('initialView') . "',
- 					locale:'" . $this->getValue('locale') . "',
-					firstDay:" . $this->getValue('firstday') . ",
-				";
-
-            if ($this->getValue('headershow') == 'yes') {
-                echo "  headerToolbar:{
-						start: 'title',
-						center: '',
-						end: 'today,next'
-					}";
-            } else {
-                echo "  headerToolbar:{
-						start: 'title',
-						center: '',
-						end: ''
-					}";
-            };
-        } else {
-            echo "{
-					allDay:true,
-					initialView: 'dayGridMonth',
-					locale:'en',
-					headerToolbar:{
-						start: 'title',
-						center: '',
-						end: 'next'
-					}";
-        };
-
-        echo ", events: [
-		";
-
-        if (!empty(glob(PATH_CONTENT . 'lff-events/*.json'))) {
-            foreach (glob(PATH_CONTENT . 'lff-events/*.json') as $key => $file) {
-                $data = file_get_contents($file);
-                echo $data;
-
-                if ($key !== count(glob(PATH_CONTENT . 'lff-events/*.json'))) {
-                    echo ',';
-                };
-            };
-        };
-
-        echo "
-			],
-
-			eventContent: function( info ) {
-			  return {html: info.event.title};
-			}
-		
-		});
-		calendar.render();
-
-		var calendarEl = document.getElementById('calendar');
-		var dateInput = document.getElementById('dateInput');
-		var goToDateButton = document.getElementById('goToDateButton');
-
-		goToDateButton.addEventListener('click', function() {
-		   var inputDate = dateInput.value;
-		   if (inputDate) {
-			var targetDate = new Date(inputDate);
-            calendar.gotoDate(targetDate);
-
-			} else {
-				alert('Enter Date!');
-			}
-		});
-	});
-	</script>";
     }
 
 
     public function showCalendar($ce = '')
     {
-        return '
-        <div id="calendar"></div>
-    
-        <div class="datepicker">
-            <input type="date" id="dateInput">
-            <button id="goToDateButton">Check Date</button>
-        </div>';
+       
     }
 
 
@@ -361,17 +221,6 @@ class lffEvents extends Plugin
     public function pageBegin()
     {
 
-        global $page;
-
-        $newcontent = preg_replace_callback(
-            '/\\[% ce %\\]/i',
-            [$this, 'showCalendar'],
-            $page->content()
-        );
-
-
-        global $page;
-        $page->setField('content', $newcontent);
     }
 }
 
