@@ -7,7 +7,6 @@ $domainName = "https://www.leedsfirstfriday.com/web/app";
 // where this is installed, with trailing slash
 // only used in the generation of QR codes for now
 $baseURL = $domainName."/web/app/";
-$adminbaseURL = $domainName."/appadmin/";
 $imageBaseDir="../app/images/app_images/";
 // full URL to your logo - recommended 840px wide
 $logoURL = "images/lfflogo.png";
@@ -27,9 +26,6 @@ $maxUserAge=360;
 
 // To enable passcodes, set this to 1
 $passcodeEnable=1;
-
-// To enable per user passcodes, set this to 1
-$userLogins=0;  
 
 // Max cookie age on user pages
 //              S     M    H    D
