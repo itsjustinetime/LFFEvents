@@ -207,6 +207,18 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 	
 .js-scroll {
 	opacity:0;
@@ -637,7 +649,6 @@ min-width:25vw;
 .articletag {
     padding: .5em;
     color: yellow;
-	border:2px solid yellow;
     border-radius: 10px;
     position: relative;
     text-transform: uppercase;
@@ -645,8 +656,22 @@ min-width:25vw;
 	display: flex;
 	justify-content:center;
 	align-content:center;
+	background:#000;
+	background-clip: padding-box; /* !importanté */
+	border: solid 2px transparent; /* !importanté */
 }
 
+ .articletag:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -2px; /* !importanté */
+    border-radius: inherit; /* !importanté */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 200%;
+	animation: gradient 15s ease infinite;
+  }
 .articletag a {
 	text-decoration:none;
 	text-transform:uppercase;
