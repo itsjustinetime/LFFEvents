@@ -1,8 +1,5 @@
 # LFFEvents
-Two plugins for the open source flat-file CMS system Bludit.  One theme (jttheme) for Bludit
-
-The first, LFFEvents allows the creation & management of data for a social events app.
-The second, lff-data allows data created by LFFEvents to be displayed in pages using shortcodes
+A social event management plugin for the open source flat-file CMS system Bludit.
 
 # LFFEvents
 Once added to Bludit, open the settings page from the sidebar menu.  Set up the various categories there: 
@@ -25,27 +22,4 @@ Images can be uploaded to various categories by dragging & dropping files onto t
 Passcodes for the user frontend app access can be managed from the 'passcodes' admin page.  Here, a name, value (the desired passcode) and expiry date are set.
 
 All data is output in JSON format in the bl-content/lff-events/json directory
-
-# lff-data
-Available shortcodes
-[youtube]  => example [youtube=VIDEOID]
-
-[lffvideo] => example [lffvideo=/path/to/video/file.mp4]
-
-[lffevents] displays upcoming events in a slider form
-
-[lffeventsgrid] displays upconing events in a responsive grid format
-
-[lffvenues] displays venues set to 'recommended'
-
-[lffservices] displays service providers
-
-[lfffuture] lists upcoming LFF dates based on the next 12 first fridays of each month
-
-[lffhighlights] displays venue highlights fron LFFEvents
-
-
-# app
-
-The front end for all of the event, highlight, venue & service data set by the LFFEvents plugin.
 
