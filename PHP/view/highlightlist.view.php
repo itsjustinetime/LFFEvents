@@ -70,7 +70,7 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/highlights/*.json'))) {
 foreach ($highlightdata as $item) {
 	?>
 	<div class="listitem" style="border:1px solid pink; padding:10px;">
-		<div class="itemdate"><h4>
+		<div class="itemdate"><h4><?php echo $item['highlightvenue']; ?> &nbsp;</h4>
 		<?php $evDate = new DateTime($item['highlightstart']); echo date_format($evDate,"l jS F Y g:i a"); ?> - 
 		<?php $evDate = new DateTime($item['highlightend']); echo date_format($evDate,"l jS F Y g:i a"); ?></h4></div>
 		<div class="row itemrow">
@@ -81,7 +81,6 @@ foreach ($highlightdata as $item) {
 			<div class="col"><h5>Description</h5><?php echo $item['highlightdescription']; ?></div>
 		</div>
 		<div class="row itemrow">
-			<div class="col"><h5>Venue</h5><?php echo $item['highlightvenue']; ?></div>
 			<div class="col"><h5>Priority</h5><?php echo $item['highlightpriority']; ?></div>
 		</div>
 		<div class="row itemrow">
