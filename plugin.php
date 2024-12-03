@@ -44,7 +44,7 @@ class lffEvents extends Plugin
 		
 		if (isset($_POST['create-highlight'])) {
             $createHighlight = new LFFHighlight();
-            $createHighlight->getInfo($_POST['highlighttitle'],$_POST['highlightsubtitle'], $_POST['highlightdescription'], $_POST['highlightstart'], $_POST['highlightend'],$_POST['highlightctatext'], $_POST['highlightctaurl'], $_POST['highlightvenue'],$_POST['highlightshow'],$_POST['highlightpriority'],$_POST['highlightoffercode'],$_POST['highlightid']);
+            $createHighlight->getInfo($_POST['highlighttitle'],$_POST['highlightsubtitle'], $_POST['highlightdescription'], $_POST['highlightstart'], $_POST['highlightend'],$_POST['highlightctatext'], $_POST['highlightctaurl'], $_POST['highlightvenue'],$_POST['highlightshow'],$_POST['highlightpriority'],$_POST['highlightoffercode'],$_POST['highlightcategory'], $_POST['highlightid']);
             $createHighlight->createFile();
 			$createJson  = new LFFJSON();
 			$createJson->updateJSON();
