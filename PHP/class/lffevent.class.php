@@ -103,6 +103,8 @@ class LFFJSON
 				}
 		}
 
+		array_multisort(array_column($highlightdata, 'highlightcategory'), SORT_DESC, array_column($highlightdata, 'highlightpriority'), SORT_ASC, $highlightdata);
+		
 		// Get services data
 		$servicesdata=[];
 
@@ -548,9 +550,10 @@ class LFFHighlight
 	public $highlightshow;
 	public $highlightpriority;
 	public $highlightoffercode;
+	public $highlightcategory;
 	public $highlightid;
 
-    public function getInfo($highlighttitle, $highlightsubtitle, $highlightdescription, $highlightstart, $highlightend, $highlightctatext, $highlightctaurl, $highlightvenue, $highlightshow,$highlightpriority,$highlightoffercode,$highlightid)
+    public function getInfo($highlighttitle, $highlightsubtitle, $highlightdescription, $highlightstart, $highlightend, $highlightctatext, $highlightctaurl, $highlightvenue, $highlightshow,$highlightpriority,$highlightoffercode,$highlightcategory, $highlightid)
     {
         $this->highlighttitle = $highlighttitle;
 		$this->highlightsubtitle = $highlightsubtitle;
@@ -563,6 +566,7 @@ class LFFHighlight
 		$this->highlightshow  = $highlightshow;
 		$this->highlightpriority  = $highlightpriority;
 		$this->highlightoffercode  = $highlightoffercode;
+		$this->highlightcategory  = $highlightcategory;
 		$this->highlightid = $highlightid;
     }
 
@@ -583,6 +587,7 @@ class LFFHighlight
 		$highlight['highlightshow'] = $this->highlightshow;
 		$highlight['highlightpriority'] = $this->highlightpriority;
 		$highlight['highlightoffercode'] = $this->highlightoffercode;
+		$highlight['highlightcategory'] = $this->highlightcategory;
 		$highlight['highlightid'] = $this->highlightid;
 
         if ($this->highlightctaurl !== '') {
