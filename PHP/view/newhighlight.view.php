@@ -123,7 +123,7 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/venues/*.json'))) {
 			array_push($venuenames,$venuename);
 		}
 }
-echo $this->getValue('highlightcategories');
+
  $highlightCategories=explode(",",$this->getValue('highlightcategories'));
 
 ?>
@@ -148,7 +148,12 @@ echo $this->getValue('highlightcategories');
 	<label for="highlightcategory">Category</label>
 	<select name="highlightcategory"> <?php
 	foreach ($highlightCategories as $highlightcat) {
-	echo '<option value="'.$highlightcat.'">'.$highlightcat.'</option>';
+	echo '<option value="'.$highlightcat.'" ';
+	if (isset($_GET['edit'])) {
+		if ($highlightcat == $fileJS->highlightcategory) { echo 'selected'; }
+	}
+	
+	echo '>'.$highlightcat.'</option>';
 	}
 	?>
 	</select>

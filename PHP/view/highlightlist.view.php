@@ -81,6 +81,7 @@ foreach ($highlightdata as $item) {
 			<div class="col"><h5>Description</h5><?php echo $item['highlightdescription']; ?></div>
 		</div>
 		<div class="row itemrow">
+			<div class="col"><h5>Category</h5><?php echo $item['highlightcategory']; ?></div>
 			<div class="col"><h5>Priority</h5><?php echo $item['highlightpriority']; ?></div>
 		</div>
 		<div class="row itemrow">
