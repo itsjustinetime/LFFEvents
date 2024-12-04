@@ -109,6 +109,17 @@
   .checkbox-wrapper-22 .slider.round:before {
     border-radius: 50%;
   }
+  
+  @media only screen and (max-width: 450px) {
+  .imageitem {
+    width:40vw;
+	margin-right:2vw;
+  }
+
+  .adminthumb {
+	  width: 40vw;
+  }
+}
 </style>
 
 
