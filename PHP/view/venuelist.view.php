@@ -81,34 +81,42 @@ array_multisort( array_column($venuedata, $columnname), SORT_ASC, $venuedata );
 <h3><span class="no-italics">📅</span>Venues List</h3>
 
 <a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?addvenue" class="btn">Add Venue ➕ </a>
-<div class="row">
-<div class="col heading"><a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuename">Name</a></div>
-<div class="col heading"><a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venueaddress">Address</a></div>
-<div class="col heading">Image</div>
-<div class="col heading"><a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuecategory">Cat</a></div>
-<div class="col heading"><a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuepriority">Priority</a></div>
-<div class="col heading"><a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuerecommended">Recc</a></div>
-<div class="col heading"><a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venueshow">Show</a></div>
-<div class="col heading">Edit</div>
-<div class="col heading">Del</div>
+<h5>Sort By</h5>
+<div class="row itemrow">
+	<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuename">Name</a></div>
+	<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venueaddress">Address</a></div>
+	<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuecategory">Cat</a></div>
+</div>
+<div class="row itemrow">
+	<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuepriority">Priority</a></div>
+	<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venuerecommended">Recc</a></div>
+	<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listvenues&sortby=venueshow">Show</a></div>
 </div>
 <?php 
 foreach ($venuedata as $item) {
 	?>
-	<div class="row itemrow">
-	<div class="col"><?php echo $item['venuename']; ?></div>
-	<div class="col"><?php echo $item['venueaddress']; ?></div>
-	<div class="col"><img class="listthumb" src="<?php echo HTML_PATH_ROOT.'/bl-content/lff-events/images/'.$item['venueimage']; ?>"></div>
-	<div class="col"><?php echo $item['venuecategory']; ?></div>
-	<div class="col"><?php echo $item['venuepriority']; ?></div>
-	<div class="col"><?php if ($item['venuerecommended'] == 'on') echo 'yes'; ?></div>
-	<div class="col"><?php if ($item['venueshow'] == 'on') echo 'yes'; ?></div>
-	<div class="col"><a href="<?php echo DOMAIN_ADMIN . '/plugin/lffevents?addvenue&edit=' . $item['filepath']; ?>" class="btn-sm">Edit</a></div>
-	<div class="col"><a href="<?php echo DOMAIN_ADMIN . '/plugin/lffevents?deletevenue=' . $item['filepath']; ?>" class="btn-sm btn-sm-red delbtn">Delete</a></div>
+	
+	<div class="listitem" style="border:1px solid pink; padding:10px;">
+		<div class="itemdate"><h4><?php echo $item['venuename']; ?> &nbsp;</h4></div>
+		<div class="row itemrow">
+			<div class="col"><h5>Address</h5><?php echo $item['venueaddress']; ?></div>
+			<div class="col"><img class="listthumb" src="<?php echo HTML_PATH_ROOT.'/bl-content/lff-events/images/'.$item['venueimage']; ?>"></div>
+		</div>
+		<div class="row itemrow">
+			<div class="col"><h5>Category</h5><?php echo $item['venuecategory']; ?></div>
+			<div class="col"><h5>Priority</h5><?php echo $item['venuepriority']; ?></div>
+		</div>
+		<div class="row itemrow">
+			<div class="col"><h5>Recommended</h5><?php if ($item['venuerecommended'] == 'on') echo 'yes'; else echo 'no';?></div>
+			<div class="col"><h5>Show?</h5><?php if ($item['venueshow'] == 'on') echo 'yes'; else echo 'no'; ?></div>
+		</div>
+		<div class="row itemrow">
+			<div class="col"><a href="<?php echo DOMAIN_ADMIN . '/plugin/lffevents?addvenue&edit=' . $item['filepath']; ?>" class="btn-sm">Edit</a></div>
+			<div class="col"><a href="<?php echo DOMAIN_ADMIN . '/plugin/lffevents?deletevenue=' . $item['filepath']; ?>" class="btn-sm btn-sm-red delbtn">Delete</a></div>
+		</div>
 	</div>
 	<?php
 }
-
 
 ?>
 
