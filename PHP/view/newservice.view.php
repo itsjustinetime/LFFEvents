@@ -171,7 +171,7 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/images/*.json'))) {
 	
 	?>
 	</div>
-	<input type="text" name="serviceimage" id="eventimageselect" <?php if (isset($_GET['edit'])) { echo 'value="'.@$fileJS->serviceimage.'"'; }; ?> 
+	<input type="text" name="serviceimage" id="eventimageselect" autocomplete="off" <?php if (isset($_GET['edit'])) { echo 'value="'.@$fileJS->serviceimage.'"'; }; ?> 
 
 												
 	<label for="www">Website</label>

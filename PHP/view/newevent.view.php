@@ -242,7 +242,7 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/images/*.json'))) {
 	?>
 	</div>
 	
-	<input type="text" name="eventimage" id="eventimagesel" <?php if (isset($_GET['edit'])) { echo 'value="'.@$fileJS->eventimage.'"'; }; ?> 
+	<input type="text" name="eventimage" id="eventimagesel" autocomplete="off" <?php if (isset($_GET['edit'])) { echo 'value="'.@$fileJS->eventimage.'"'; }; ?> 
 	>
 	<label for="priorityselector">Priority</label>
 	<select id="priorityselector" name="eventpriority">

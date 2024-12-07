@@ -166,7 +166,7 @@ if ($fileJS->venuepriority == $x) { echo " selected";}  } else if ($x == 5) {ech
 	
 	?>
 	</div>
-		<input type="text" name="venueimage" id="eventimageselect" <?php if (isset($_GET['edit'])) { echo 'value="'.@$fileJS->venueimage.'"'; }; ?> 
+		<input type="text" name="venueimage" id="eventimageselect" autocomplete="off" <?php if (isset($_GET['edit'])) { echo 'value="'.@$fileJS->venueimage.'"'; }; ?> 
 	>
 												
 	<label for="websitebox">Website</label>
