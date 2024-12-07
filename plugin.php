@@ -193,7 +193,7 @@ class lffEvents extends Plugin
     {
         $pluginName = Text::lowercase(__CLASS__);
         $url = HTML_PATH_ADMIN_ROOT . 'plugin/' . $pluginName;
-		$html = '<div class="navbar-brand">App Admin</div>';
+		$html = '<hr><div class="navbar-brand">App Admin</div>';
         $html .= '<ul><li><a id="Events" class="nav-link" href="' . $url . '">Events</a></li>';
 		$html .= '<li><a id="Highlights" class="nav-link" href="' . $url . '?listhighlights">Highlights</a></li>';
         $html .= '<li><a id="Venues" class="nav-link" href="' . $url . '?listvenues">Venues</a></li>';
