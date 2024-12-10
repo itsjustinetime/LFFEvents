@@ -3,7 +3,8 @@
 class LFFJSON
 {
 	public function updateJSON() {
-
+$dateTime=str_replace(" ","T",date("Y-m-d H:i"));
+error_log( "dateTime:".$dateTime);
 	function findData($array,$column,$searchcol,$search) {
 			foreach ($array as $item) {
 				if ($item[$searchcol] == $search) {return $item[$column]; }
@@ -40,6 +41,7 @@ class LFFJSON
 		// find recurring events in list
 		$recurring=[];
 		foreach ($eventdata as $event) {
+
 			if ( $event['eventrecur']== 'on' && !str_contains($event['eventtitle'],"LFF ")) {
 				array_push($recurring,$event); //$recurring[$recCount]=$event;
 				$recCount++;
@@ -63,10 +65,11 @@ class LFFJSON
 			$count++;
 			$lffcount=0;
 			foreach ($LFFs as $LFF) {
+							if ($LFF['eventstart'] > $dateTime) {
 				$LFFdate=explode("T",$LFF['eventstart'])[0];
 				$LFFenddate=explode("T",$LFF['eventend'])[0];
 				foreach ($recurring as $recur) {
-					if ($lffcount==0) {continue;}
+					if ($lffcount<2) {$lffcount++; continue;}
 					$recur['eventid']='recur'.uniqid();
 					$recTime=explode("T",$recur['eventstart'])[1];
 					$recEndTime=explode("T",$recur['eventend'])[1];
@@ -85,6 +88,7 @@ class LFFJSON
 					$count++;
 				}
 				$lffcount++;
+			}
 			}
 		}
 
