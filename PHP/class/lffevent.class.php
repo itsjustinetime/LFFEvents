@@ -104,7 +104,7 @@ class LFFJSON
 					$data['venueimage']=findData($venuedata,'venueimage','venuename',$data['highlightvenue']);
 					$data['venueaddress']=findData($venuedata,'venueaddress','venuename',$data['highlightvenue']);
 					$data['venuegps']=findData($venuedata,'venuegps','venuename',$data['highlightvenue']);
-					if ($data['highlightshow'] == 'on' ) { $highlightdata[]=$data; }
+					if ($data['highlightshow'] == 'on' && $data['highlightend'] > $dateTime) { $highlightdata[]=$data; }
 				}
 		}
 
