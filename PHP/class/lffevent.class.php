@@ -3,8 +3,8 @@
 class LFFJSON
 {
 	public function updateJSON() {
-$dateTime=str_replace(" ","T",date("Y-m-d H:i"));
-error_log( "dateTime:".$dateTime);
+	$dateTime=str_replace(" ","T",date("Y-m-d H:i",strtotime($date. ' + 1 days')));
+
 	function findData($array,$column,$searchcol,$search) {
 			foreach ($array as $item) {
 				if ($item[$searchcol] == $search) {return $item[$column]; }
@@ -65,11 +65,12 @@ error_log( "dateTime:".$dateTime);
 			$count++;
 			$lffcount=0;
 			foreach ($LFFs as $LFF) {
-							if ($LFF['eventstart'] > $dateTime) {
+							if ($LFF['eventstart'] > $dateTime ) {
 				$LFFdate=explode("T",$LFF['eventstart'])[0];
 				$LFFenddate=explode("T",$LFF['eventend'])[0];
 				foreach ($recurring as $recur) {
-					if ($lffcount<2) {$lffcount++; continue;}
+					$recDate = explode("T",$recur['eventstart'])[0];
+					if ($recDate == $LFFdate) { continue; }
 					$recur['eventid']='recur'.uniqid();
 					$recTime=explode("T",$recur['eventstart'])[1];
 					$recEndTime=explode("T",$recur['eventend'])[1];
