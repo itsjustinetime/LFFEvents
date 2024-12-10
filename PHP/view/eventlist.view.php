@@ -66,7 +66,7 @@
 <?php
 
 $eventdata=[];
-$columnname="eventtitle";
+$columnname="eventstart";
 
 if (isset($_GET['sortby'])) {$columnname=$_GET['sortby'];}
 if (!empty(glob(PATH_CONTENT . 'lff-events/events/*.json'))) {
@@ -102,7 +102,7 @@ array_multisort( array_column($eventdata, $columnname), SORT_ASC, $eventdata );
 foreach ($eventdata as $item) {
 	?>
 	<div class="listitem" style="border:1px solid pink; padding:10px;">
-		<div class="itemdate"><h4><?php $evDate = new DateTime($item['eventstart']); echo date_format($evDate,"l jS F Y"); ?></h4></div>
+		<div class="itemdate"><h4><?php $evDate = new DateTime($item['eventstart']); echo $item['eventtitle']." | ".date_format($evDate,"l jS F Y"); ?></h4></div>
 		<div class="row itemrow">
 			<div class="col"><h5>Title:</h5><?php echo $item['eventtitle']; ?></div>
 			<div class="col"><h5>Subtitle:</h5><?php echo $item['eventsubtitle']; ?></div>
