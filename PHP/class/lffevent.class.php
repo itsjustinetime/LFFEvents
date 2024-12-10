@@ -26,6 +26,7 @@ class LFFJSON
 		array_multisort(array_column($venuejsondata, 'venuecategory'), SORT_ASC, array_column($venuejsondata, 'venuepriority'), SORT_ASC, $venuejsondata);
 		// Get event data
 		$eventdata=[];
+		$recurring=[];
 
 		if (!empty(glob(PATH_CONTENT . 'lff-events/events/*.json'))) {
 				foreach (glob(PATH_CONTENT . 'lff-events/events/*.json') as $key => $file) {
@@ -33,19 +34,8 @@ class LFFJSON
 					$data['venueaddress']=findData($venuedata,'venueaddress','venuename',$data['eventvenue']);
 					$data['venuegps']=findData($venuedata,'venuegps','venuename',$data['eventvenue']);
 					if ($data['eventshow'] == 'on'  && $data['eventstart'] > $dateTime) { $eventdata[]=$data; }
+					if ($data['eventrecur'] == 'on' ) { $recurring[]=$data; }
 				}
-		}
-
-		$recCount=0;
-
-		// find recurring events in list
-		$recurring=[];
-		foreach ($eventdata as $event) {
-
-			if ( $event['eventrecur']== 'on' && !str_contains($event['eventtitle'],"LFF ")) {
-				array_push($recurring,$event); //$recurring[$recCount]=$event;
-				$recCount++;
-			}
 		}
 
 		$LFFCount=0;
