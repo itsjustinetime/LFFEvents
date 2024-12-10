@@ -32,7 +32,7 @@ class LFFJSON
 					$data = json_decode(file_get_contents($file),true);
 					$data['venueaddress']=findData($venuedata,'venueaddress','venuename',$data['eventvenue']);
 					$data['venuegps']=findData($venuedata,'venuegps','venuename',$data['eventvenue']);
-					if ($data['eventshow'] == 'on' ) { $eventdata[]=$data; }
+					if ($data['eventshow'] == 'on'  && $data['eventstart'] > $dateTime) { $eventdata[]=$data; }
 				}
 		}
 
