@@ -34,7 +34,7 @@ class LFFJSON
 					$data['venueaddress']=findData($venuedata,'venueaddress','venuename',$data['eventvenue']);
 					$data['venuegps']=findData($venuedata,'venuegps','venuename',$data['eventvenue']);
 					if ($data['eventshow'] == 'on'  && $data['eventstart'] > $dateTime) { $eventdata[]=$data; }
-					if ($data['eventrecur'] == 'on' ) { $recurring[]=$data; }
+					if ($data['eventrecur'] == 'on'  && $data['eventshow'] == 'on') { $recurring[]=$data; }
 				}
 		}
 
