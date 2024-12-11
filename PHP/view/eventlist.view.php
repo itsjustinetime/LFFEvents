@@ -24,6 +24,12 @@
         border: red;
     }
 
+.sortbtn {
+	background-color:white;
+	border:2px solid green;
+	color:black!important;
+}
+
     .event-items {
         width: 100%;
         list-style-type: none;
@@ -91,10 +97,10 @@ array_multisort( array_column($eventdata, $columnname), SORT_ASC, $eventdata );
 </div>
 <div class="row itemrow">
 <div class="col"><a class="btn-sm sortbtn" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventtitle">Title</a></div>
-<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventsubtitle">Subtitle</a></div>
-<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventvenue">Venue</a></div>
-<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventstart">Start</a></div>
-<div class="col"><a class="btn-sm" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventpriority">Priority</a></div>
+<div class="col"><a class="btn-sm sortbtn" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventsubtitle">Subtitle</a></div>
+<div class="col"><a class="btn-sm sortbtn" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventvenue">Venue</a></div>
+<div class="col"><a class="btn-sm sortbtn" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventstart">Start</a></div>
+<div class="col"><a class="btn-sm sortbtn" href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?listevents&sortby=eventpriority">Priority</a></div>
 </div>
 
     <?php
@@ -104,6 +110,7 @@ foreach ($eventdata as $item) {
 	<div class="listitem" style="border:1px solid pink; padding:10px;">
 		<div class="itemdate"><h4><?php $evDate = new DateTime($item['eventstart']); echo $item['eventtitle']." | ".date_format($evDate,"l jS F Y"); ?></h4></div>
 		<div class="row itemrow">
+			<div class="col"><img class="listthumb" src="<?php echo HTML_PATH_ROOT.'/bl-content/lff-events/images/'.$item['eventimage']; ?>"></div>
 			<div class="col"><h5>Title:</h5><?php echo $item['eventtitle']; ?></div>
 			<div class="col"><h5>Subtitle:</h5><?php echo $item['eventsubtitle']; ?></div>
 		</div>
@@ -113,10 +120,13 @@ foreach ($eventdata as $item) {
 		<div class="row itemrow">
 			<div class="col"><h5>Venue</h5><?php echo $item['eventvenue']; ?></div>
 			<div class="col"><h5>Time</h5><?php echo explode("T",$item['eventstart'])[1] . ' - '. explode("T",$item['eventend'])[1]; ?></div>
-		</div>
-		<div class="row itemrow">
 			<div class="col"><h5>Priority</h5><?php echo $item['eventpriority']; ?></div>
-			<div class="col"><img class="listthumb" src="<?php echo HTML_PATH_ROOT.'/bl-content/lff-events/images/'.$item['eventimage']; ?>"></div>
+		</div>
+
+		<div class="row itemrow">
+			<div class="col"><h5>Show</h5><?php if ($item['eventshow']=="on") echo "YES"; else echo "no"; ?></div>
+			<div class="col"><h5>Recur</h5><?php if ($item['eventrecur']=="on") echo "YES"; else echo "no"; ?></div>
+			<div class="col"><h5>Full?</h5><?php if ($item['eventfull']=="on") echo "YES"; else echo "no"; ?></div>
 		</div>
 		<div class="row itemrow">
 			<div class="col"><a href="<?php echo DOMAIN_ADMIN . '/plugin/lffevents?addevent&edit=' . $item['filepath']; ?>" class="btn-sm">Edit</a></div>
