@@ -68,6 +68,7 @@
 
 <h3><span class="no-italics">📅</span>Passcodes - <?php if (isset($_GET['edit'])) {?>Edit Passcode <?php } else {?>Add New Passcode<?php } ?> </h3>
 <a href="<?php echo DOMAIN_ADMIN; ?>/plugin/lffevents?listpasscodes" class="btn">Back to list</a>
+<a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?helppasscodecreate" class="btn">Help</a>
 
 <?php
 $fileSet = PATH_CONTENT . 'lff-events/settings/settings.json';
@@ -97,12 +98,12 @@ $catJS = json_decode($cats);
 	} else echo 'value="'.uniqid() .'"';
 	
 	?>> 
-	<label for="nm">Name</label>
+	<label for="nm">Name (Required)</label>
 	<input type="text" id="nm" name="passcodename" required <?php if (isset($_GET['edit'])) {
 																echo 'value="' . $fileJS->passcodename . '"';
 															}; ?>>
 
-	<label for="val">Value</label>
+	<label for="val">Value (Required)</label>
 	<input type="text" id="val" name="passcodevalue" required <?php if (isset($_GET['edit'])) {
 																echo 'value="' . $fileJS->passcodevalue . '"';
 															}; ?> onchange="upperCase()">
