@@ -107,7 +107,7 @@ $catJS = json_decode($cats);
 																echo 'value="' . $fileJS->passcodevalue . '"';
 															}; ?> onchange="upperCase()">
 	<label for="expires">Expiry Date (Required)</label>
-	<input id="expires" type="datetime-local" name="passcodeexpires" class="startdate" required <?php if (isset($_GET['edit'])) {
+	<input id="expires" type="text" name="passcodeexpires" class="startdate" required <?php if (isset($_GET['edit'])) {
 																			echo 'value="' . $fileJS->passcodeexpires . '"';
 																		}; ?>>
 						
@@ -120,6 +120,11 @@ function upperCase() {
   const x = document.getElementById("val");
   x.value = x.value.toUpperCase();
 }
-
+	
+	jQuery('#expires').datetimepicker(
+	{step:30,
+	format:"Y-m-d H:i"
+	}
+	);
 </script>
 

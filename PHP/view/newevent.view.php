@@ -203,25 +203,11 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/images/*.json'))) {
 	</select>
 
 	<label for="startbox">Event Start (Required)</label>
-	<input type="<?php
-
-					if (isset($fileJS->fullday)  && $fileJS->fullday == 'fullday') {
-						echo 'date';
-					} else {
-						echo 'datetime-local';
-					};
-					?>" name="eventstart" id="startbox" class="startdate" required <?php if (isset($_GET['edit'])) {
+	<input type="text" name="eventstart" id="startbox" class="startdate" required <?php if (isset($_GET['edit'])) {
 																			echo 'value="' . $fileJS->eventstart . '"';
-																		}; ?>>
+																		}; ?>>																	
 	<label for="endbox">Event End (Required)</label>
-	<input type="<?php
-
-					if (isset($fileJS->fullday)  && $fileJS->fullday == 'fullday') {
-						echo 'date';
-					} else {
-						echo 'datetime-local';
-					};
-					?>" name="eventend" id="endbox" class="enddate" required <?php if (isset($_GET['edit'])) {
+	<input type="text" name="eventend" id="endbox" class="enddate" required <?php if (isset($_GET['edit'])) {
 																		echo 'value="' . $fileJS->eventend . '"';
 																	}; ?>>
 	<label for="imagesel">Image</label>
@@ -321,5 +307,21 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/images/*.json'))) {
 		$('#imagepickbox').slideDown();
 	});
 	
+	function leadingZeros(input) {
+		if (input <10) {input="0"+input; }
+		return input;
+	}
+	
+	jQuery('#startbox').datetimepicker(
+	{step:30,
+	format:"Y-m-d H:i"
+	}
+	);
+	
+	jQuery('#endbox').datetimepicker(
+	{step:30,
+	format:"Y-m-d H:i"
+	}
+	);
 </script>
 

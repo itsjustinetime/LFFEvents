@@ -119,7 +119,7 @@ foreach ($eventdata as $item) {
 		</div>
 		<div class="row itemrow">
 			<div class="col"><h5>Venue</h5><?php echo $item['eventvenue']; ?></div>
-			<div class="col"><h5>Time</h5><?php echo explode("T",$item['eventstart'])[1] . ' - '. explode("T",$item['eventend'])[1]; ?></div>
+			<div class="col"><h5>Time</h5><?php echo explode(" ",$item['eventstart'])[1] . ' - '. explode(" ",$item['eventend'])[1]; ?></div>
 			<div class="col"><h5>Priority</h5><?php echo $item['eventpriority']; ?></div>
 		</div>
 

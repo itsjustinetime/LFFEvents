@@ -177,12 +177,12 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/venues/*.json'))) {
 }; ?>
 </textarea>
 
-	<label for="start">Start (Required)</label>
-	<input id="start" type="datetime-local" name="highlightstart" step="900" class="startdate" required <?php if (isset($_GET['edit'])) {
+	<label for="startbox">Start (Required)</label>
+	<input id="startbox" type="text" name="highlightstart" step="900" class="startdate" required <?php if (isset($_GET['edit'])) {
 																			echo 'value="' . $fileJS->highlightstart . '"';
 																		}; ?>>
-	<label for="end">End (Required)</label>
-	<input id="end" type="datetime-local" name="highlightend" class="enddate" required <?php if (isset($_GET['edit'])) {
+	<label for="endbox">End (Required)</label>
+	<input id="endbox" type="text" name="highlightend" class="enddate" required <?php if (isset($_GET['edit'])) {
 																		echo 'value="' . $fileJS->highlightend . '"';
 																	}; ?>>
 	<label for="priorityselector">Priority</label>
@@ -225,16 +225,18 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/venues/*.json'))) {
 </form>
 
 <script>
-	document.querySelector('.longevent').addEventListener('click', () => {
-
-		if (document.querySelector('.longevent').value == 'fullday') {
-			document.querySelector('.startdate').setAttribute('type', 'date');
-			document.querySelector('.enddate').setAttribute('type', 'date');
-		} else {
-			document.querySelector('.startdate').setAttribute('type', 'datetime-local');
-			document.querySelector('.enddate').setAttribute('type', 'datetime-local');
-		}
-
-	});
+	
+	
+	jQuery('#startbox').datetimepicker(
+	{step:30,
+	format:"Y-m-d H:i"
+	}
+	);
+	
+	jQuery('#endbox').datetimepicker(
+	{step:30,
+	format:"Y-m-d H:i"
+	}
+	);
 </script>
 

@@ -3,7 +3,7 @@
 class LFFJSON
 {
 	public function updateJSON() {
-	$dateTime=str_replace(" ","T",date("Y-m-d H:i",strtotime($date. ' + 1 days')));
+	$dateTime=date("Y-m-d H:i");
 
 	function findData($array,$column,$searchcol,$search) {
 			foreach ($array as $item) {
@@ -33,7 +33,7 @@ class LFFJSON
 					$data = json_decode(file_get_contents($file),true);
 					$data['venueaddress']=findData($venuedata,'venueaddress','venuename',$data['eventvenue']);
 					$data['venuegps']=findData($venuedata,'venuegps','venuename',$data['eventvenue']);
-					if ($data['eventshow'] == 'on'  && $data['eventstart'] > $dateTime) { $eventdata[]=$data; }
+					if ($data['eventshow'] == 'on' && $data['eventstart'] > $dateTime) { $eventdata[]=$data; }
 					if ($data['eventrecur'] == 'on'  && $data['eventshow'] == 'on') { $recurring[]=$data; }
 				}
 		}
@@ -42,8 +42,8 @@ class LFFJSON
 		$LFFs=[];
 		// find LFF events in list
 		foreach ($eventdata as $event) {
-			$dayofweek = date('w', strtotime(explode("T", $event['eventstart'])[0]));
-			echo $dayofweek.'<br>'.$event['eventtitle'];
+			$dayofweek = date('w', strtotime(explode(" ", $event['eventstart'])[0]));
+			//echo $dayofweek.'<br>'.$event['eventtitle'];
 			if ( str_contains($event['eventtitle']," LFF") && $dayofweek==5 ) {
 				array_push($LFFs,$event);
 				$LFFCount++;
@@ -56,16 +56,16 @@ class LFFJSON
 			$lffcount=0;
 			foreach ($LFFs as $LFF) {
 							if ($LFF['eventstart'] > $dateTime ) {
-				$LFFdate=explode("T",$LFF['eventstart'])[0];
-				$LFFenddate=explode("T",$LFF['eventend'])[0];
+				$LFFdate=explode(" ",$LFF['eventstart'])[0];
+				$LFFenddate=explode(" ",$LFF['eventend'])[0];
 				foreach ($recurring as $recur) {
-					$recDate = explode("T",$recur['eventstart'])[0];
+					$recDate = explode(" ",$recur['eventstart'])[0];
 					if ($recDate == $LFFdate) { continue; }
 					$recur['eventid']='recur'.uniqid();
-					$recTime=explode("T",$recur['eventstart'])[1];
-					$recEndTime=explode("T",$recur['eventend'])[1];
-					$recur['eventstart']=$LFFdate."T".$recTime;
-					$recur['eventend']=$LFFenddate."T".$recEndTime;
+					$recTime=explode(" ",$recur['eventstart'])[1];
+					$recEndTime=explode(" ",$recur['eventend'])[1];
+					$recur['eventstart']=$LFFdate." ".$recTime;
+					$recur['eventend']=$LFFenddate." ".$recEndTime;
 					$recur['eventfull']=0;
 
 					if ($recur['eventtitle']=="Pints N Straws") {
