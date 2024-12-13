@@ -176,6 +176,9 @@ class lffEvents extends Plugin
 		}  elseif (isset($_GET['helphighlightcreate'])) {
 			include($this->phpPath() .  'PHP/view/helphighlightscreate.php');
 		}
+		 elseif (isset($_GET['helpservicecreate'])) {
+			include($this->phpPath() .  'PHP/view/helpservicescreate.php');
+		}
 		else {
             include($this->phpPath() . 'PHP/view/eventlist.view.php');
         }
