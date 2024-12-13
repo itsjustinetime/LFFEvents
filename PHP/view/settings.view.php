@@ -62,7 +62,8 @@
 <input type="text" name="highlightcategories" placeholder="en" value="<?php echo $this->getValue('highlightcategories'); ?>">
 <label for="">Image Categories</label>
 <input type="text" name="imagecategories" placeholder="en" value="<?php echo $this->getValue('imagecategories'); ?>">
-
+<label for="">Service Categories</label>
+<input type="text" name="servicecategories" placeholder="en" value="<?php echo $this->getValue('servicecategories'); ?>">
 
 
 <input type="submit" name="create-settings" class="create-settings btn btn-primary mt-3" value="Save Settings">

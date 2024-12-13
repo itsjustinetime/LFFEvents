@@ -91,6 +91,7 @@ array_multisort( array_column($eventdata, $columnname), SORT_ASC, $eventdata );
 <h3><span class="no-italics">📅</span>Events List</h3>
 
 <a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?addevent" class="btn">Add Event ➕ </a>
+<a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?helpevent" class="btn">Help</a>
 <div class="eventlist">
 <div class="row">
 <div class="col">Sort by</div>

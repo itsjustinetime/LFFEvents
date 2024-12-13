@@ -145,8 +145,8 @@ class lffEvents extends Plugin
             include($this->phpPath() . 'PHP/view/newevent.view.php');
         } elseif (isset($_GET['settings'])) {
             include($this->phpPath() . 'PHP/view/settings.view.php');
-        } elseif (isset($_GET['howto'])) {
-            include($this->phpPath() . 'PHP/view/howuse.view.php');
+        } elseif (isset($_GET['helpevent'])) {
+            include($this->phpPath() . 'PHP/view/helpevents.php');
         } elseif (isset($_GET['listvenues'])) {
 			include($this->phpPath() . 'PHP/view/venuelist.view.php');
 		} elseif (isset($_GET['addvenue'])) {
@@ -169,6 +169,12 @@ class lffEvents extends Plugin
 			include($this->phpPath() .  'PHP/view/newpasscode.view.php');
 		}  elseif (isset($_GET['listpasscodes'])) {
 			include($this->phpPath() .  'PHP/view/passcodelist.view.php');
+		}  elseif (isset($_GET['helpeventcreate'])) {
+			include($this->phpPath() .  'PHP/view/helpeventscreate.php');
+		}  elseif (isset($_GET['helpvenuecreate'])) {
+			include($this->phpPath() .  'PHP/view/helpvenuescreate.php');
+		}  elseif (isset($_GET['helphighlightcreate'])) {
+			include($this->phpPath() .  'PHP/view/helphighlightscreate.php');
 		}
 		else {
             include($this->phpPath() . 'PHP/view/eventlist.view.php');

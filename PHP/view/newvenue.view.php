@@ -79,6 +79,7 @@
 
 <h3><span class="no-italics">📅</span> LFF Venues - <?php if (isset($_GET['edit'])) {?>Edit<?php } else {?>Add New<?php } ?> </h3>
 <a href="<?php echo DOMAIN_ADMIN; ?>/plugin/lffevents?listvenues" class="btn">Back to list</a>
+<a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?helpvenuecreate" class="btn">Help</a>
 
 <?php
 $fileSet = PATH_CONTENT . 'lff-events/settings/settings.json';
