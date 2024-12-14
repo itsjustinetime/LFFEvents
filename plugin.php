@@ -193,11 +193,7 @@ class lffEvents extends Plugin
   }
   
   public function adminBodyEnd(){
-	  $html = $this->includeJS('dropzone.min.js');
-	  //var_dump($this);
-	  //url: "PHP/uploadimage.php"
-	  $html .= '<script></script>';
-	  //Dropzone.autoDiscover = false; $("#dropzone").dropzone();	  
+	  $html .= '<script></script>';	  
 	  return $html;
   }
   
