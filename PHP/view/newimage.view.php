@@ -101,13 +101,5 @@ Dropzone.options.dropzone = {
 		setTimeout(function() { document.getElementById('dragsuccess').style.opacity=0; }, 1200);
     }
 };
-
-$('#dropzone').on('success', function() {
-  var args = Array.prototype.slice.call(arguments);
-
-  // Look at the output in you browser console, if there is something interesting
-  console.log(args);
-});
-
 </script>
 
