@@ -79,7 +79,7 @@
 
 <h3><span class="no-italics">📅</span>Services - <?php if (isset($_GET['edit'])) {?>Edit Service <?php } else {?>Add New Service<?php } ?> </h3>
 <a href="<?php echo DOMAIN_ADMIN; ?>/plugin/lffevents?listservices" class="btn">Back to list</a>
-
+<a href="<?php echo DOMAIN_ADMIN; ?>plugin/lffevents?helpservicecreate" class="btn">Help</a>
 <?php
 $fileSet = PATH_CONTENT . 'lff-events/settings/settings.json';
 ?>

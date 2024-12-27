@@ -202,13 +202,15 @@ class lffEvents extends Plugin
         $pluginName = Text::lowercase(__CLASS__);
         $url = HTML_PATH_ADMIN_ROOT . 'plugin/' . $pluginName;
 		$html = '<hr><div class="navbar-brand">App Admin</div>';
-        $html .= '<ul><li><a id="Events" class="nav-link" href="' . $url . '">Events</a></li>';
-		$html .= '<li><a id="Highlights" class="nav-link" href="' . $url . '?listhighlights">Highlights</a></li>';
-        $html .= '<li><a id="Venues" class="nav-link" href="' . $url . '?listvenues">Venues</a></li>';
-		$html .= '<li><a id="Images" class="nav-link" href="' . $url . '?listimages">Images</a></li>';
-		$html .= '<li><a id="Services" class="nav-link" href="' . $url . '?listservices">Services</a></li>';
-		$html .= '<li><a id="Passcodes" class="nav-link" href="' . $url . '?listpasscodes">Passcodes</a></li>';
-		$html .= '<li><a class="nav-link" href="'. DOMAIN_ADMIN .'configure-plugin/lffEvents">Settings ⚙️</a></li>';
+        $html .= '<ul style="list-style:none; margin-left:-4vw;">';
+		$html .= '<li><a id="Events" class="nav-link" href="' . $url . '"><i class="fa fa-calendar"></i>Events</a></li>';
+		$html .= '<li><a id="Highlights" class="nav-link" href="' . $url . '?listhighlights"><i class="fa fa-ticket"></i>Highlights</a></li>';
+        $html .= '<li><a id="Venues" class="nav-link" href="' . $url . '?listvenues"><i class="fa fa-map-pin"></i>Venues</a></li>';
+		$html .= '<li><a id="Images" class="nav-link" href="' . $url . '?listimages"><i class="fa fa-image"></i>Images</a></li>';
+		$html .= '<li><a id="Services" class="nav-link" href="' . $url . '?listservices"><i class="fa fa-paint-brush"></i>Services</a></li>';
+		$html .= '<li><a id="Passcodes" class="nav-link" href="' . $url . '?listpasscodes"><i class="fa fa-key"></i>Passcodes</a></li>';
+		$html .= '<li><a id="Maps" class="nav-link" href="' . $url . '?listmaps"><i class="fa fa-map"></i>Maps</a></li>';
+		$html .= '<li><a class="nav-link" href="'. DOMAIN_ADMIN .'configure-plugin/lffEvents"><i class="fa fa-cog"></i>Settings️</a></li>';
         $html .= '</ul>';
 	return $html;
     }

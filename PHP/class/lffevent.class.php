@@ -65,7 +65,7 @@ class LFFJSON
 					$recTime=explode(" ",$recur['eventstart'])[1];
 					$recEndTime=explode(" ",$recur['eventend'])[1];
 					$recur['eventstart']=$LFFdate." ".$recTime;
-					$recur['eventend']=$LFFenddate." ".$recEndTime;
+					$recur['eventend']=$LFFdate." ".$recEndTime;
 					$recur['eventfull']=0;
 
 					if ($recur['eventtitle']=="Pints N Straws") {
