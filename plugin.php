@@ -73,6 +73,17 @@ class lffEvents extends Plugin
             echo ("<meta http-equiv='refresh' content='0;url=" . DOMAIN_ADMIN . "plugin/lffevents?listvenues'>");
         };
 		
+		if (isset($_POST['create-map'])) {
+			$createMap = new LFFMap();
+			$createMap->createMapFile();
+			echo ("<meta http-equiv='refresh' content='0;url=" . DOMAIN_ADMIN . "plugin/lffevents?listmaps'>");
+		}
+		
+		if (isset($_GET['deletemap'])) {
+			unlink(PATH_CONTENT . 'lff-events/maps/' . $_GET['deletemap'] . '.webp');
+			echo ("<meta http-equiv='refresh' content='0;url=" . DOMAIN_ADMIN . "plugin/lffevents?listmaps'>");
+		}
+		
 		if (isset($_POST['create-image'])) {
             $createImage = new LFFImage();
 			$createImage->createFile();
@@ -178,9 +189,12 @@ class lffEvents extends Plugin
 		}
 		  elseif (isset($_GET['helppasscodecreate'])) {
 			include($this->phpPath() .  'PHP/view/helppasscodescreate.php');
-		}
-		 elseif (isset($_GET['helpservicecreate'])) {
+		} elseif (isset($_GET['helpservicecreate'])) {
 			include($this->phpPath() .  'PHP/view/helpservicescreate.php');
+		} elseif (isset($_GET['listmaps'])) {
+			include($this->phpPath() . 'PHP/view/listmaps.php');
+		} elseif (isset($_GET['addmap'])) {
+			include($this->phpPath() . 'PHP/view/newmap.php');
 		}
 		else {
             include($this->phpPath() . 'PHP/view/eventlist.view.php');
@@ -193,7 +207,7 @@ class lffEvents extends Plugin
   }
   
   public function adminBodyEnd(){
-	  $html .= '<script></script>';	  
+	  $html = '<script></script>';	  
 	  return $html;
   }
   
@@ -202,7 +216,7 @@ class lffEvents extends Plugin
         $pluginName = Text::lowercase(__CLASS__);
         $url = HTML_PATH_ADMIN_ROOT . 'plugin/' . $pluginName;
 		$html = '<hr><div class="navbar-brand">App Admin</div>';
-        $html .= '<ul style="list-style:none; margin-left:-4vw;">';
+        $html .= '<ul style="list-style:none; margin-left:-4px; padding:0;">';
 		$html .= '<li><a id="Events" class="nav-link" href="' . $url . '"><i class="fa fa-calendar"></i>Events</a></li>';
 		$html .= '<li><a id="Highlights" class="nav-link" href="' . $url . '?listhighlights"><i class="fa fa-ticket"></i>Highlights</a></li>';
         $html .= '<li><a id="Venues" class="nav-link" href="' . $url . '?listvenues"><i class="fa fa-map-pin"></i>Venues</a></li>';
