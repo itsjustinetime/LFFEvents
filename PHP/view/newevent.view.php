@@ -324,5 +324,12 @@ if (!empty(glob(PATH_CONTENT . 'lff-events/images/*.json'))) {
 	format:"Y-m-d H:i"
 	}
 	);
+	
+	document.querySelector('#endbox').addEventListener('change', () =>{
+	var startDateTime = document.querySelector('#startbox').value;
+	var endDateTime = document.querySelector('#endbox').value;
+	if (endDateTime < startDateTime) { alert ("The end date/time cannot be before the start date/time. Check the date!") };
+	
+	});
 </script>
 
